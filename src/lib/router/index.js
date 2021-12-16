@@ -37,10 +37,11 @@ class Router {
     });
   }
 
-  addRoute = (verb, path, callback) => {
+  addRoute = (verb, path, callback, middleware) => {
     this.routes[verb.toLocaleLowerCase()].push({
       path,
       callback,
+      middleware: middleware,
     });
   };
 
@@ -134,6 +135,7 @@ class Router {
         try {
           req.body = JSON.parse(postedData);
         } catch (e) {
+          req.body = postedData;
           console.log("POST PARSE ERROR: ==>", e);
         }
       }
@@ -177,6 +179,9 @@ class Router {
     // };
 
     // next();
+    // if (match.middleware) {
+    //   match.middleware(req, res, () => {});
+    // }
     match.callback(req, res);
   };
 
@@ -192,6 +197,9 @@ class Router {
       // this.middlewareIndex = 0;
       if (match?.params) {
         req.params = match.params;
+      }
+      if (match.middleware) {
+        match.middleware(req, res, () => {});
       }
       if (method == "post") {
         //read the posted data

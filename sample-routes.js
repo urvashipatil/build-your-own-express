@@ -1,4 +1,4 @@
-const Router = require("./router");
+const Router = require("./src/lib/router");
 
 let router = new Router();
 

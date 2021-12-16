@@ -1,6 +1,6 @@
 //After creating app separately
 
-const rocket = require("./rocket"); //Chnaged from router to rocket
+const rocket = require("./src/lib/rocket"); //Chnaged from router to rocket
 var multer = require("multer");
 const appRoutes = require("./sample-routes");
 const app = new rocket();
@@ -9,8 +9,7 @@ const port = 3000;
 // app.use(rocket.static("public"));
 app.use(rocket.static(path.join(__dirname, "public")));
 
-// app.use("/api", appRoutes);
-// // app.use(rocket.static("public"));
+app.use("/api", appRoutes);
 
 app.use(function (req, res, next) {
   console.log("Time:", Date.now());
@@ -47,15 +46,15 @@ const testmiddleware = () => {
   console.log("testmiddleware");
 };
 
-// app.get("/hi/", testmiddleware, (req, res) => {
-//   res.write("New Hi to all");
-//   res.end();
-// });
+app.get("/hi", testmiddleware, (req, res) => {
+  res.write("New Hi to all");
+  res.end();
+});
 
-// app.get("/hi/:mydata", (req, res) => {
-//   res.write(`New Hi to all ${req.params?.mydata}`);
-//   res.end();
-// });
+app.get("/check/:mydata", (req, res) => {
+  res.write(`New Hi to all ${req.params?.mydata}`);
+  res.end();
+});
 
 // app.post("/data", (req, res) => {
 //   console.log("body", req.body); //req.body.input
