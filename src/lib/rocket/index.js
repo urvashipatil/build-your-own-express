@@ -66,7 +66,8 @@ class App {
       this.router.handleRequest(req, res);
     });
 
-    server.listen.apply(server, [port, callback]);
+    // server.listen.apply(server, [port, callback]);
+    server.listen(port, callback);
   };
 }
 
