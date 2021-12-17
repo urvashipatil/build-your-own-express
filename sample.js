@@ -47,13 +47,21 @@ const testmiddleware = () => {
 };
 
 app.get("/hi", testmiddleware, (req, res) => {
-  res.write("New Hi to all");
-  res.end();
+  // res.write("New Hi to all");
+  res.send("New Hi to all");
+  // res.end();
 });
 
 app.get("/check/:mydata", (req, res) => {
   res.write(`New Hi to all ${req.params?.mydata}`);
   res.end();
+});
+
+app.get("/json", (req, res) => {
+  // res.writeHead(200, { contentType: "application/json" });
+  // let body = JSON.stringify({ test: "asas", name: "aaa" });
+  res.json({ test: "asas", name: "aaa" });
+  // res.end(body);
 });
 
 // app.post("/data", (req, res) => {

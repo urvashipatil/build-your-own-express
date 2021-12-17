@@ -10,10 +10,13 @@
 
 //Allow to add middleware in .post() or .get()
 
+//intgrate new Response object
+
 // const http = require("http");
 const fileSystem = require("fs");
+let Response = require("../response");
 path = require("path");
-var contentDisposition = require("content-disposition");
+// var contentDisposition = require("content-disposition");
 const { METHODS } = require("http");
 const { url } = require("inspector");
 // const port = 3000;
@@ -187,6 +190,7 @@ class Router {
 
   // listen = (port, callback) => {
   handle = (req, res) => {
+    // res.__proto__ = Response.prototype;
     // let server = http.createServer((req, res) => {
     console.log("req", req.url, req.method);
     let method = req.method.toLocaleLowerCase();

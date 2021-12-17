@@ -4,6 +4,7 @@ const http = require("http");
 const static = require("serve-static");
 const { METHODS } = require("http");
 const Router = require("../router");
+let Response = require("../response");
 
 class App {
   constructor() {
@@ -63,6 +64,9 @@ class App {
   listen = (port, callback) => {
     let server = http.createServer((req, res) => {
       // this.router.handle(req, res);
+      debugger;
+      res.__proto__ = Response.prototype;
+      res.app = this;
       this.router.handleRequest(req, res);
     });
 
