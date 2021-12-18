@@ -164,8 +164,9 @@ class Router {
     // let server = http.createServer((req, res) => {
     console.log("req", req.url, req.method);
     let method = req.method.toLocaleLowerCase();
-    res.writeHead(200, { "Content-Type": "text-plain" });
+    // res.writeHead(200, { "Content-Type": "text-plain" });
 
+    // following code is working for public
     // if (req.url.indexOf("public") > -1) {
     //   // res.setHeader("Content-Disposition", contentDisposition("/public/"));
     //   // res.writeHead(200, {

@@ -194,6 +194,23 @@ class Router {
     console.log("req", req.url, req.method);
     let method = req.method.toLocaleLowerCase();
 
+    // if (req.url.indexOf("public") > -1) {
+    //   console.log("in public code");
+     
+    //   var filePath = path.join(__dirname, "/flower3.jpg");
+    //   var stat = fileSystem.statSync(filePath);
+
+    //   res.writeHead(200, {
+    //     "Content-Type": "image/jpg",
+    //     "Content-Length": stat.size,
+    //   });
+
+    //   var readStream = fileSystem.createReadStream(filePath);
+    //   // We replaced all the event handlers with a simple call to readStream.pipe()
+    //   readStream.pipe(res);
+    //   return;
+    // }
+
     let match = this.matchUrl(req.url, method);
     if (match) {
       // this.middlewareIndex = 0;
