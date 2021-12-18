@@ -190,11 +190,9 @@ class Router {
 
   // listen = (port, callback) => {
   handle = (req, res) => {
-    // res.__proto__ = Response.prototype;
     // let server = http.createServer((req, res) => {
     console.log("req", req.url, req.method);
     let method = req.method.toLocaleLowerCase();
-    res.writeHead(200, { "Content-Type": "text-plain" });
 
     let match = this.matchUrl(req.url, method);
     if (match) {
