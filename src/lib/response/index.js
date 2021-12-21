@@ -13,7 +13,7 @@ class Response extends http.ServerResponse {
       status = this.statusCode || 200;
     }
 
-    let contentLength = body ? Buffer.byteLength(body): 0;
+    let contentLength = body ? Buffer.byteLength(body) : 0;
     this.writeHead(status, {
       "Content-Length": contentLength,
       "Content-Type": this.contentType,

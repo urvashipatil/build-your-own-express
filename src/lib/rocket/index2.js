@@ -1,20 +1,14 @@
 //Moved Listen method from router to app
-//Move  use method from router to app - Add render and set method
-
-//Add support to set view engine
+//Move  use method from router to app
 const http = require("http");
 const static = require("serve-static");
 const { METHODS } = require("http");
 const Router = require("../router");
 let Response = require("../response");
-let cons = require("consolidate"); //Template engine consolidation library.
-//NOTE: you must still install the engines you wish to use, add them to your package.json dependencies.
 
 class App {
   constructor() {
     this.router = new Router();
-    this.settings = {};
-
     // this.middlewares = [];
     // this.middlewareIndex = 0;
 
@@ -67,25 +61,10 @@ class App {
     return this;
   };
 
-  set(name, value) {
-    this.settings[name] = value;
-  }
-
-  //To support view engine
-  render(file, locals, callback) {
-    let engineName = this.settings["view engine"],
-      engine = cons[engineName],
-      path = this.settings["views"] + "/" + file + "." + engineName; // Optimization required
-
-    engine(path, locals, function (err, html) {
-      if (err) throw err;
-      callback(html);
-    });
-  }
-
   listen = (port, callback) => {
     let server = http.createServer((req, res) => {
       // this.router.handle(req, res);
+      debugger;
       res.__proto__ = Response.prototype;
       res.app = this;
       this.router.handleRequest(req, res);

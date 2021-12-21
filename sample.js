@@ -1,5 +1,7 @@
 //After creating app separately
 
+//Set up template engine
+
 const rocket = require("./src/lib/rocket"); //Chnaged from router to rocket
 var multer = require("multer");
 const appRoutes = require("./sample-routes");
@@ -8,6 +10,10 @@ const port = 3000;
 
 // app.use(rocket.static("public"));
 app.use(rocket.static(path.join(__dirname, "public")));
+
+//set up templete engine
+app.set("views", __dirname + "/views");
+app.set("view engine", "ejs");
 
 app.use("/api", appRoutes);
 
@@ -62,6 +68,10 @@ app.get("/json", (req, res) => {
   // let body = JSON.stringify({ test: "asas", name: "aaa" });
   res.json({ test: "asas", name: "aaa" });
   // res.end(body);
+});
+
+app.get("/todos", function (req, res) {
+  res.render("todo", { todos: [{ id: 1, name: "todo 1" }] });
 });
 
 // app.post("/data", (req, res) => {

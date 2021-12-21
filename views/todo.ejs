@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Todo List</title>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+</head>
+
+<body>
+    <h1>TODO APP</h1>
+    <div id="todo-table">
+        <form>
+            <input type=text name="item" id="item" placeholder="add new item.." required />
+            <input type=hidden name="id" id="id" />
+            <button type="submit" id="btnSubmit">add item</button>
+            <button id="btnEdit">save item</button>
+        </form>
+        <!-- <ul>
+            <% for(var i=0;i< todos.length;i++){ %>
+            <li><span class="btnGetDetail" data-id=<%=todos[i].id %>>
+                    <%= todos[i].item %> </span> <button class="btnDelete" data-id=<%=todos[i].id %>>X</button></li>
+            <% } %>
+        </ul> -->
+    </div>
+</body>
+
+</html>
